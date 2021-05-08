@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Cosmic from 'cosmicjs';
 
 import styles from '../styles/Home.module.css'
+import styled from 'styled-components';
+
+import NavigationBar from '../components/NavigationBar/';
+import BackButton from '../components/StyledComponents/Buttons/BackButton';
 
 function About  () {
     const [pageData, setPageData] = useState(null);
@@ -43,10 +47,14 @@ function About  () {
 
     function renderPage() {
         return (
-            <main className={styles.main}>
-                <h1>{pageData.title}</h1>
-                <section dangerouslySetInnerHTML={{__html:pageData.content}} />
-            </main>
+            <>
+                <NavigationBar/>
+                <main className={styles.main}>
+                    <BackButton/>
+                    <h1>{pageData.title}</h1>
+                    <AboutContainer dangerouslySetInnerHTML={{__html:pageData.content}} />
+                </main>
+            </>
         )
     }
 
@@ -60,3 +68,12 @@ function About  () {
 }
 
 export default About;
+
+const AboutContainer = styled.section`
+    margin: 5em;
+    padding: 0 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
