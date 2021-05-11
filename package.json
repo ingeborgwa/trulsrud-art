@@ -20,5 +20,9 @@
     "styled-components": "^5.2.3",
     "tailwindcss": "^2.1.2",
     "theme": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-next": "^1.4.0"
   }
 }
