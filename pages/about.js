@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Cosmic from 'cosmicjs';
+import styled from 'styled-components';
 
 import styles from '../styles/Home.module.css'
-import styled from 'styled-components';
 
 import NavigationBar from '../components/NavigationBar/';
 import BackButton from '../components/StyledComponents/Buttons/BackButton';
@@ -10,9 +10,10 @@ import BackButton from '../components/StyledComponents/Buttons/BackButton';
 function About  () {
     const [pageData, setPageData] = useState(null);
     
+
+     //------- setter opp Cosmic JS -------//
     useEffect(() => {
 
-        //setter opp Cosmic JS
         const client = new Cosmic();
         const bucket = client.bucket({
             slug: process.env.NEXT_PUBLIC_BUCKET_SLUG,      

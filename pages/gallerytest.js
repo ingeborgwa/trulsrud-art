@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import styled from 'styled-components';
 import Cosmic from 'cosmicjs';
 import styles from '../styles/Home.module.css'
@@ -8,20 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltRight  } from '@fortawesome/free-solid-svg-icons';
 
 import PageTitle from '../components/StyledComponents/PageTitle';
-import NavigationBar from '../components/NavigationBar/';
+import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
 import { MainContainer } from '../components/StyledComponents/Containers';
 
 
 
-
 // artWork.metafields[4].value[0]
 
-function Gallery () {
+const GalleryTest =() =>{
     const [artWorks, setArtWorks] = useState("");
-    
-   
-
 
     //------- setter opp Cosmic JS -------//
 
@@ -44,7 +39,6 @@ function Gallery () {
             limit: 20
         })
         .then(data => {
-            
             setArtWorks(data.objects);
         })
         .catch(error => {
@@ -53,61 +47,66 @@ function Gallery () {
     }, []);
 
 
-    function renderSkeleton() {
-        return (
-            <p>Laster data..</p>
-        );
+   
+
+    function renderArtWorks() {
+        return artWorks.map(artWork => {
+            const image = artWork.metafields.find(metafield => metafield.key === 'main_image')
+            const height = artWork.metafields.find(metafield => metafield.key === 'height')
+            const width = artWork.metafields.find(metafield => metafield.key === 'width')
+            // console.log(artWork.metafields[4].value[0])
+            return(
+                <Card key={artWork.slug}>
+                    <img 
+                        src={image.imgix_url} 
+                        width="200"
+                    />
+                    <h6>{artWork.title}</h6>
+                    <p>{height.value}cm x {width.value}cm</p>
+                    <Button>
+                        <p>Se mer</p>
+                        <FontAwesomeIcon 
+                            icon={faLongArrowAltRight}
+                        />
+                    </Button>
+
+                </Card>
+            )
+        })
     }
 
-
-    function renderPage() {
-        return (
-            <>
-                <NavigationBar/>
-                <MainContainer>
-                    <PageTitle>Galleri</PageTitle>
-                    <GalleryGrid>
-                        {artWorks.map(artWork => {
-                            const image = artWork.metafields.find(metafield => metafield.key === 'main_image')
-                            const height = artWork.metafields.find(metafield => metafield.key === 'height')
-                            const width = artWork.metafields.find(metafield => metafield.key === 'width')
-                            
-                        
-                            return (
-                                <Card key={artWork.slug}>
-                                    <img 
-                                        src={image.imgix_url} 
-                                        width="200"
-                                    />
-                                    <h6>{artWork.title}</h6>
-                                    <p>{height.value}cm x {width.value}cm</p>
-                                    <Button>
-                                        <p>Se mer</p>
-                                        <FontAwesomeIcon 
-                                            icon={faLongArrowAltRight}
-                                        />
-                                    </Button>
-                                </Card>
-                            )
-                        })}
-                    </GalleryGrid> 
-                    
-                </MainContainer>
-                <Footer/>
-            </>
-        )
+    function filterArts(e) {
+        setArtWorks("");
+        setArtWorks(
+            artWorks.filter((el) => el.metafields[4].value[0] === e.target.innerHTML)
+        );
+        
     }
 
     return(
         <>
-            {(artWorks.length === 0) ? renderSkeleton() : renderPage()}
+            <NavigationBar/>
+            <MainContainer>
+                <PageTitle>Galleri</PageTitle>
+                <OptionsContainer>
+                    <h2 onClick={(e) => filterArts(e)}>Digital kunst</h2>
+                    <h2 onClick={(e) => filterArts(e)}>Akvarell</h2>
+                    <h2 onClick={(e) => filterArts(e)}>Alcohol Ink</h2>
+                    <h2 onClick={(e) => filterArts(e)}>Lerret</h2>
+                    <h2 onClick={(e) => filterArts(e)}>Portretter</h2>
+                </OptionsContainer >
+                <GalleryGrid>
+                    {artWorks ? (renderArtWorks()) : (<p>Velg kategori</p>)}
+                </GalleryGrid> 
+            </MainContainer>
+            <Footer/>
         </>
     );
 }
 
-export default Gallery;
+export default GalleryTest;
 
-
+// {(artWorks.length === 0) ? renderSkeleton() : renderPage()}
 
 
 //--------- STYLES ---------//
@@ -174,36 +173,20 @@ const Button = styled.button`
 
 `;
 
-const CheckboxSection = styled.section`
+const OptionsContainer = styled.section`
     display: flex;
     justify-content: center;
     margin: 1.2em;
     padding: 0.5em;
     font-size: 0.8rem;
     
-    div{
-        display: flex;
-        padding-left: 1.2em;
-        span{
-            padding-left: 0.2em;
-        }
+    h2{
+        padding: 0.8em;
+        font-weight: 400;
+        cursor: pointer;
     }
 `;
 
-const Input = styled.input`
-    
-`;
 
 
-{/* <ul>
-    {artWorks.map(item => {
-        const image = item.metafields.find(metafield => metafield.key === 'main_image')
-        return(
-            <li key={item.slug}>
-                {item.title}
-                <img src={image.imgix_url} width="200"/>
-                
-            </li>
-        )
-    })}
-</ul> */}
+

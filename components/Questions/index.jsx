@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretUp, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+
 import PageTitle from '../StyledComponents/PageTitle';
 
 
