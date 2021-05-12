@@ -9,8 +9,6 @@ function ContactForm () {
         
         <FormBox>
             <ImageContainer alt="Anatomisk hjerte"/>
-            
-            
             <Form>
                 <label htmlFor="name">Navn</label>
                 <input

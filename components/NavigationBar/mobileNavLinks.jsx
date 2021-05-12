@@ -14,7 +14,7 @@ export function MobileNavLinks(props){
             {isOpen && (
                 <LinksWrapper>
                     <LinkItem><Link href="/about">Om kunstneren</Link></LinkItem>
-                    <LinkItem><Link href="#">Kontakt</Link></LinkItem>
+                    <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
                     <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
                 </LinksWrapper>
             )}

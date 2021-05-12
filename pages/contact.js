@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import PageTitle from '../components/StyledComponents/PageTitle';
 import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
-import { MainContainer } from '../components/StyledComponents/Containers';
+import { MainContainer, Container } from '../components/StyledComponents/Containers';
 import ContactForm from '../components/ContactForm';
 
 function ContactPage () {
@@ -50,8 +50,8 @@ function ContactPage () {
                 <NavigationBar/>
                 <MainContainer>
                     <PageTitle>Ta kontakt her</PageTitle>
-                    {/* <article dangerouslySetInnerHTML={{__html:pageData.content}}/> */}
                     <ContactForm/>
+                    <Container dangerouslySetInnerHTML={{__html:pageData.content}}/>
                 </MainContainer>
                 <Footer/>
             </>
@@ -67,3 +67,10 @@ function ContactPage () {
 }
 
 export default ContactPage;
+
+
+
+//------- STYLE -------//
+
+
+

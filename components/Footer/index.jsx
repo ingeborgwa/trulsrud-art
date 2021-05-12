@@ -9,15 +9,15 @@ const Footer = () => {
         <FooterContainer>
             <LeftSection>
                 <LinkItem><Link href="/about">Om Thea Trulsrud</Link></LinkItem>
-                <LinkItem><Link href="#">Kontakt</Link></LinkItem>
+                <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
             </LeftSection>
             <MiddleSection>
                 <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
                 <LinkItem><Link href="#">Spørsmål & svar</Link></LinkItem>
             </MiddleSection>
             <RightSection>
-                <LinkItem><Link href="/gallery">Facebook</Link></LinkItem>
-                <LinkItem><Link href="/gallery">Instagram</Link></LinkItem>
+                <LinkItem><a target="_blank" href="https://www.facebook.com/trulsrudart/">Facebook</a></LinkItem>
+                <LinkItem><a target="_blank" href="https://www.instagram.com/trulsrud.art/">Instagram</a></LinkItem>
             </RightSection>
         </FooterContainer>
         
@@ -79,7 +79,8 @@ const LinkItem = styled.li`
     border-top: 2px solid transparent;
     transition: all 220ms ease-in-out;
         &:hover {
-            color:#2ecc71;
+            color:#35473b;
+            text-decoration: underline;
         }
 `;
 

@@ -9,7 +9,7 @@ export function NavLinks(){
         <NavLinksContainer>
             <LinksWrapper>
                 <LinkItem><Link href="/about">Om kunstneren</Link></LinkItem>
-                <LinkItem><Link href="#">Kontakt</Link></LinkItem>
+                <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
                 <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
             </LinksWrapper>
         </NavLinksContainer>
@@ -45,7 +45,7 @@ const LinkItem = styled.li`
     border-top: 2px solid transparent;
     transition: all 220ms ease-in-out;
         &:hover {
-            border-top: 2px solid #2ecc71;
+            border-top: 2px solid #35473b;
         }
 `;
 
@@ -54,3 +54,8 @@ const Links = styled.a`
     color: inherit;
     font-size: inherit;
 `;
+
+
+//darkgreen: #35473b;
+//pink: #b41397;
+//darkblue:#05114b;

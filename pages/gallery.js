@@ -174,36 +174,7 @@ const Button = styled.button`
 
 `;
 
-const CheckboxSection = styled.section`
-    display: flex;
-    justify-content: center;
-    margin: 1.2em;
-    padding: 0.5em;
-    font-size: 0.8rem;
-    
-    div{
-        display: flex;
-        padding-left: 1.2em;
-        span{
-            padding-left: 0.2em;
-        }
-    }
-`;
-
-const Input = styled.input`
-    
-`;
 
 
-{/* <ul>
-    {artWorks.map(item => {
-        const image = item.metafields.find(metafield => metafield.key === 'main_image')
-        return(
-            <li key={item.slug}>
-                {item.title}
-                <img src={image.imgix_url} width="200"/>
-                
-            </li>
-        )
-    })}
-</ul> */}
+
+
