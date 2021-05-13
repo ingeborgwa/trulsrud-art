@@ -17,6 +17,7 @@ import { MainContainer } from '../components/StyledComponents/Containers';
 
 const GalleryTest =() =>{
     const [artWorks, setArtWorks] = useState("");
+    const [displayedArt, setDisplayedArt] = useState();
 
     //------- setter opp Cosmic JS -------//
 
@@ -39,7 +40,9 @@ const GalleryTest =() =>{
             limit: 20
         })
         .then(data => {
+
             setArtWorks(data.objects);
+            console.log(artWorks)
         })
         .catch(error => {
             console.log(error)
@@ -49,39 +52,47 @@ const GalleryTest =() =>{
 
    
 
-    function renderArtWorks() {
-        return artWorks.map(artWork => {
-            const image = artWork.metafields.find(metafield => metafield.key === 'main_image')
-            const height = artWork.metafields.find(metafield => metafield.key === 'height')
-            const width = artWork.metafields.find(metafield => metafield.key === 'width')
-            // console.log(artWork.metafields[4].value[0])
-            return(
+    function renderArtWorks(type) {
+        if (!type) {
+            return <p>Loading...</p>;
+          } else {
+            return type.map((artWork) => {
+              const image = artWork.metafields.find(
+                (metafield) => metafield.key === "main_image"
+              );
+              const height = artWork.metafields.find(
+                (metafield) => metafield.key === "height"
+              );
+              const width = artWork.metafields.find(
+                (metafield) => metafield.key === "width"
+              );
+              // console.log(artWork.metafields[4].value[0])
+              return (
                 <Card key={artWork.slug}>
-                    <img 
-                        src={image.imgix_url} 
-                        width="200"
-                    />
-                    <h6>{artWork.title}</h6>
-                    <p>{height.value}cm x {width.value}cm</p>
-                    <Button>
-                        <p>Se mer</p>
-                        <FontAwesomeIcon 
-                            icon={faLongArrowAltRight}
-                        />
-                    </Button>
-
+                  <img src={image.imgix_url} width="200" />
+                  <h6>{artWork.title}</h6>
+                  <p>
+                    {height.value}cm x {width.value}cm
+                  </p>
+                  <Button>
+                    <p>Se mer</p>
+                    <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  </Button>
                 </Card>
-            )
-        })
+              );
+            });
+          }
+        
     }
 
     function filterArts(e) {
-        setArtWorks("");
-        setArtWorks(
+        setDisplayedArt("");
+        setDisplayedArt(
             artWorks.filter((el) => el.metafields[4].value[0] === e.target.innerHTML)
         );
         
     }
+
 
     return(
         <>
@@ -96,7 +107,8 @@ const GalleryTest =() =>{
                     <h2 onClick={(e) => filterArts(e)}>Portretter</h2>
                 </OptionsContainer >
                 <GalleryGrid>
-                    {artWorks ? (renderArtWorks()) : (<p>Velg kategori</p>)}
+                
+                {displayedArt ? renderArtWorks(displayedArt) : renderArtWorks(artWorks)}
                 </GalleryGrid> 
             </MainContainer>
             <Footer/>

@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 
 import NavigationBar from '../components/NavigationBar/';
 import BackButton from '../components/StyledComponents/Buttons/BackButton';
+import { MainContainer } from '../components/StyledComponents/Containers';
 
 function About  () {
     const [pageData, setPageData] = useState(null);
@@ -50,11 +51,11 @@ function About  () {
         return (
             <>
                 <NavigationBar/>
-                <main className={styles.main}>
+                <MainContainer >
                     <BackButton/>
                     <h1>{pageData.title}</h1>
                     <AboutContainer dangerouslySetInnerHTML={{__html:pageData.content}} />
-                </main>
+                </MainContainer >
             </>
         )
     }
@@ -72,6 +73,7 @@ export default About;
 
 const AboutContainer = styled.section`
     margin: 5em;
+    width: 0%; 
     padding: 0 0.5em;
     display: flex;
     flex-direction: column;
