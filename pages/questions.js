@@ -46,6 +46,10 @@ const Questions = () => {
                 answer="Bestillingsverk vil ofte være noe høyere priset enn ferdigstilte kunstverk til salgs. Prisen varierer ut fra størrelse, materialkostnader, kompleksiteten rundt utførelse samt tidsbruk. Spesielle forespørsler vil også være med i prisgrunnlaget.Det vil være en 35 % depositum på bestillingsverk.
                 Send meg gjerne en uforpliktende forespørsel om prisanslag."
             />
+            <Question 
+                question="Får jeg se bildet før det er ferdig?"
+                answer="Det er viktig for meg at du som kunde blir fornøyd med kunsten du kjøper. Når maleriet nærmer seg ferdig, vil du få et bilde av kunstverket for å høre om du er fornøyd, eller om du ønsker noen endringer før det ferdige resultatet."
+            />
         </>
     )
 };

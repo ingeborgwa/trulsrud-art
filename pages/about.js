@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image'
 import Cosmic from 'cosmicjs';
 import styled from 'styled-components';
 
@@ -6,7 +7,7 @@ import styles from '../styles/Home.module.css'
 
 import NavigationBar from '../components/NavigationBar/';
 import BackButton from '../components/StyledComponents/Buttons/BackButton';
-import { MainContainer } from '../components/StyledComponents/Containers';
+import { MainContainer, TwoColumnsGrid } from '../components/StyledComponents/Containers';
 
 function About  () {
     const [pageData, setPageData] = useState(null);
@@ -25,7 +26,7 @@ function About  () {
         //slug til siden og hvilke props som skal med
         const params = {
             slug:'om-kunstneren',
-            props:'slug,title,content'
+            props:'slug,title,content,portrett'
         };
 
 
@@ -33,6 +34,7 @@ function About  () {
         bucket.getObjects({params})
             .then((data) => {
                 setPageData(data.objects[0]);
+                
             })
             .catch ((error) => {
                 console.log(error);
@@ -48,13 +50,24 @@ function About  () {
 
 
     function renderPage() {
+       
+
         return (
             <>
                 <NavigationBar/>
                 <MainContainer >
                     <BackButton/>
-                    <h1>{pageData.title}</h1>
-                    <AboutContainer dangerouslySetInnerHTML={{__html:pageData.content}} />
+                        {/* <h1>{pageData.title}</h1>
+                        <Image 
+                            src="/thea.jpg"
+                            alt="Bildet malt i grønt med alkohol ink."
+                            width={300}
+                            height={400}
+                        /> */}
+                        <TwoColumnsGrid>
+                            <ImageContainer/>
+                            <AboutContainer dangerouslySetInnerHTML={{__html:pageData.content}}/>
+                  </TwoColumnsGrid>
                 </MainContainer >
             </>
         )
@@ -73,10 +86,18 @@ export default About;
 
 const AboutContainer = styled.section`
     margin: 5em;
-    width: 0%; 
+    width: 70%; 
     padding: 0 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`;
+const ImageContainer = styled.div`
+    background-image: url("/thea.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20em;
+    border-radius: 10px;
+    
 `;

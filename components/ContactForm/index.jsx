@@ -84,6 +84,7 @@ const Form = styled.form`
         border: none;
         border-bottom: 1px solid black;
         
+        
     }
 
     input{
