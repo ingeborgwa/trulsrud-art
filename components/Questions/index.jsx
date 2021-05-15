@@ -50,6 +50,20 @@ const Questions = () => {
                 answer="Bestillingsverk vil ofte være noe høyere priset enn ferdigstilte kunstverk til salgs. Prisen varierer ut fra størrelse, materialkostnader, kompleksiteten rundt utførelse samt tidsbruk. Spesielle forespørsler vil også være med i prisgrunnlaget.Det vil være en 35 % depositum på bestillingsverk.
                 Send meg gjerne en uforpliktende forespørsel om prisanslag."
             />
+            <Question 
+                question="Får jeg se bildet før det er ferdig?"
+                answer="Det er viktig for meg at du som kunde blir fornøyd med kunsten du kjøper. Når maleriet nærmer seg ferdig, vil du få et bilde av kunstverket for å høre om du er fornøyd, eller om du ønsker noen endringer før det ferdige resultatet.Spesielt når jeg jobber med alcohol ink, er det en ting det er viktig å være klar over når du ønsker et bilde inspirert av et kunstverk. Alcohol ink er en kompleks og «strong minded» malingsform, hvor ingen bilder vil være like og hvert enkelt bilde vil ha sitt unike uttrykk."
+            />
+            <Question 
+                question="Er maleriet ferdig rammet inn?"
+                answer="Bildene blir ikke solgt med ramme i utgangspunktet, med mindre noe annet er nevnt.
+                Originale alcohol ink-bilder bør alltid ha ramme med glass for å bevare fargen på verket og skjerme mot sollys.
+                BAS Kunst i Larvik (https://www.facebook.com/BAS-Kunst-as-267195263617398/) er en lokal butikk i Vestfold og Telemark som selger for spesialtilpassede rammer for malerier på lerret.
+                Ved bestilling av Glisée Fine Art Prints, finnes det en rammemaker i nabobygget på Fornebo som tilbyr gode priser.
+                Kan bildet senders i posten?
+                Bildene kan sendes over hele Norge.
+                Frakttillegg vil da forekomme."
+            />
         </section>
     )
 };

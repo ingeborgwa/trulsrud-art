@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Cosmic from 'cosmicjs';
 import styles from '../styles/Home.module.css'
@@ -37,7 +38,7 @@ const GalleryTest =() =>{
                 type: 'art-works'
               },
             props: 'slug,title,metafields',
-            limit: 20
+            
         })
         .then(data => {
 
@@ -74,10 +75,10 @@ const GalleryTest =() =>{
                   <p>
                     {height.value}cm x {width.value}cm
                   </p>
-                  <Button>
+                  {/* <Button>
                     <p>Se mer</p>
                     <FontAwesomeIcon icon={faLongArrowAltRight} />
-                  </Button>
+                  </Button> */}
                 </Card>
               );
             });
@@ -90,15 +91,15 @@ const GalleryTest =() =>{
         setDisplayedArt(
             artWorks.filter((el) => el.metafields[4].value[0] === e.target.innerHTML)
         );
-        
     }
 
+   
 
     return(
         <>
             <NavigationBar/>
             <MainContainer>
-                <PageTitle>Galleri</PageTitle>
+                <PageTitle >Galleri</PageTitle>
                 <OptionsContainer>
                     <h2 onClick={(e) => filterArts(e)}>Digital kunst</h2>
                     <h2 onClick={(e) => filterArts(e)}>Akvarell</h2>

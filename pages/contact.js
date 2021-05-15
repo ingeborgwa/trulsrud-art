@@ -29,7 +29,8 @@ function ContactPage () {
         
         bucket.getObjects({params})
             .then((data) => {
-                setPageData(data.objects[4]);
+                setPageData(data.objects[3]);
+                console.log(data.objects[3])
                 
             })
             .catch ((error) => {
