@@ -27,14 +27,14 @@ export default function Home() {
           <LandingPage>
             <ImageAndTitleBox>
               <PageTitle style={{textAlign:"left"}}>trulsrud</PageTitle>
-              <ImageStyle>
+              <MainImageStyle>
                 <Image 
                     src="/landingpage.png"
                     alt="Bildet malt i grønt med alkohol ink."
                     width={400}
                     height={400}
                   />
-              </ImageStyle>
+              </MainImageStyle>
               <PageTitle style={{textAlign:"right"}}>art</PageTitle>
             </ImageAndTitleBox>
           </LandingPage>
@@ -48,37 +48,25 @@ export default function Home() {
               </p>
             </Column>
             <Grid>
-              <Image 
-                src="/landingpage.png"
-                alt="Bildet malt i grønt med alkohol ink."
-                width={200}
-                height={200}
-
+              <ImageContainer
+                src="/Mockup_blackheartfilledwithpeonies.jpg"
+                alt="Bilde i svart av peonger, malt med alcohol ink, i ramme."
               />
-              <Image 
-                src="/landingpage.png"
-                alt="Bildet malt i grønt med alkohol ink."
-                width={200}
-                height={200}
+              <ImageContainer
+                src="/Mockup_medblomsterihjertet.jpg"
+                alt="Rosa og lille blomster med hjerte, malt med alcohol ink, i ramme"
               />
-              <Image 
-                src="/landingpage.png"
-                alt="Bildet malt i grønt med alkohol ink."
-                width={200}
-                height={200}
+              <ImageContainer
+                src="/Mockup_gullhval.jpg"
+                alt="Gull hval på svart bakgrunn, i ramme"
               />
-              <Image 
-                src="/landingpage.png"
-                alt="Bildet malt i grønt med alkohol ink."
-                width={200}
-                height={200}
+              <ImageContainer
+                src="/Mockup_morgengry_skybrudd.jpg"
+                alt="To malerier av himmel på vegg over sofa"
               />
-              
             </Grid>
           </TwoColumnsGrid>
-          
           <Questions/>
-          
         </MainContainer>
 
         <Footer />
@@ -113,11 +101,17 @@ const ImageAndTitleBox = styled.div`
 
 `;
 
-const ImageStyle = styled.div`
+const MainImageStyle = styled.div`
   display: flex;
   justify-content: center; 
   padding: 0.5em;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  
+`;
+
+const ImageContainer = styled.img`
+  background: cover center no-repeat;
+  height: 20em;
+  width: 20em;
+  padding: 2em;
 `;
 

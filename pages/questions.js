@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretUp, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 import PageTitle from '../components/StyledComponents/PageTitle';
+import { MainContainer } from '../components/StyledComponents/Containers';
+import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 
 
 
@@ -75,10 +78,16 @@ const Question = () => {
 const Questions = () => {
     
     return (
-        <section style={{width: "80%"}}>
-            <PageTitle>Ofte stilte spørsmål</PageTitle>
-            <Question />
-        </section>
+        <>
+            <NavigationBar/>
+            <MainContainer>
+            <section style={{width: "60%"}}>
+                <PageTitle>Ofte stilte spørsmål</PageTitle>
+                <Question />
+            </section>
+            </MainContainer>
+            <Footer/>
+        </>
     )
 };
 

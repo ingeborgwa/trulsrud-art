@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -17,8 +18,11 @@ const NavigationBar = () => {
       <NavbarContainer>
         <LeftSection>
           <Logo onClick={() => router.push("/")}>
-            <h3>TA</h3>
-            {/* <img src="/images/autograf.png"/> */}
+            {/* <h3>TA</h3> */}
+            <img
+              src="/trulsrudAutograf.png"
+              
+            />
           </Logo>
         </LeftSection>
         <MiddleSection>
@@ -60,11 +64,10 @@ const RightSection = styled.div`
 `;
 
 
-
-
 const Logo = styled.span`
   img{
-      width: 12px;
+    width: 10em;
+    padding: 2em;
   }
 
   cursor: pointer;

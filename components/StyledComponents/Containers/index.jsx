@@ -43,6 +43,7 @@ export const TwoColumnsGrid = styled.article`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1.2em;
+  margin: 2em;
   
 `;
 

@@ -8,12 +8,12 @@ const Footer = () => {
     return(
         <FooterContainer>
             <LeftSection>
-                <LinkItem><Link href="/about">Om Thea Trulsrud</Link></LinkItem>
+                <LinkItem><Link href="/about">Møt kunstneren</Link></LinkItem>
                 <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
             </LeftSection>
             <MiddleSection>
                 <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
-                <LinkItem><Link href="#">Spørsmål & svar</Link></LinkItem>
+                <LinkItem><Link href="/questions">Spørsmål & svar</Link></LinkItem>
             </MiddleSection>
             <RightSection>
                 <LinkItem><a target="_blank" href="https://www.facebook.com/trulsrudart/">Facebook</a></LinkItem>
