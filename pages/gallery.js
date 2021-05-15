@@ -41,9 +41,9 @@ const GalleryTest =() =>{
             
         })
         .then(data => {
-
             setArtWorks(data.objects);
-            console.log(artWorks)
+            console.log(data)
+            
         })
         .catch(error => {
             console.log(error)

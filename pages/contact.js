@@ -22,21 +22,21 @@ function ContactPage () {
             read_key: process.env.NEXT_PUBLIC_READ_KEY  
         });
         
-        const params = {
-            slug:'contact',
-            props:'slug,title,content'
-        };
-        
-        bucket.getObjects({params})
-            .then((data) => {
-                setPageData(data.objects[3]);
-                console.log(data.objects[3])
-                
-            })
-            .catch ((error) => {
-                console.log(error);
-            });
+        bucket.getObject({
+            id: '609c27029a6f770008cb16f3',
+            props: 'slug,title,content',
+            
+        })
+        .then(data => {
+            setPageData(data.object);
+            console.log(data)
+            
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }, []);
+
 
 
     function renderSkeleton() {
@@ -52,7 +52,7 @@ function ContactPage () {
                 <MainContainer>
                     <PageTitle>Ta kontakt her</PageTitle>
                     <ContactForm/>
-                    <Container dangerouslySetInnerHTML={{__html:pageData.content}}/>
+                    <Container dangerouslySetInnerHTML={{__html:pageData.content}} />
                 </MainContainer>
                 <Footer/>
             </>

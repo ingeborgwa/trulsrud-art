@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
+import Cosmic from 'cosmicjs';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,28 +9,63 @@ import PageTitle from '../StyledComponents/PageTitle';
 
 
 
-const Question = ( {question, answer} ) => {
+const Question = () => {
     const [showAnswer, setShowAnswer] = useState(false);
-    
+    const [questionData, setQuestionData] = useState([]);
+
+
+    useEffect(() => {
+            
+        const client = new Cosmic();
+        const bucket = client.bucket({
+            slug: process.env.NEXT_PUBLIC_BUCKET_SLUG,      
+            read_key: process.env.NEXT_PUBLIC_READ_KEY  
+        });
+        
+        
+
+        bucket.getObjects({
+            slug: 'questions',
+            query: {
+                type: 'questions'
+              },
+            props: 'slug,title,content',
+            
+        })
+        .then(data => {
+            setQuestionData(data.objects);
+            console.log(data)
+            
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }, []);
+
     
     function toggle() {
         setShowAnswer(!showAnswer);
     }
 
+
     return (
         <>
-            <QuestionBox>
-                <QuestionStyle onClick={toggle}>
-                    <FontAwesomeIcon 
-                        style={{width: "10"}}
-                        icon={showAnswer ? faCaretUp : faCaretRight}
-                    />
-                    <p>{question}</p> 
-                </QuestionStyle>
-                <Answer style={{display: showAnswer ? "block" : "none"}}>
-                    <p>{answer}</p>
-                </Answer>
-            </QuestionBox>
+            {questionData.map(question => {
+                return (
+                    <QuestionBox key={question.slug}>
+                        <QuestionStyle onClick={toggle}>
+                            <FontAwesomeIcon 
+                                icon={showAnswer ? faCaretUp : faCaretRight}
+                            />
+                            <p>{question.title}</p>
+                        </QuestionStyle>
+                        <Answer style={{display: showAnswer ? "block" : "none"}}>
+                            <p dangerouslySetInnerHTML={{__html:question.content}} />
+                        </Answer>
+                    </QuestionBox>
+                )
+            })}
+            
         </>
     )
 };
@@ -41,29 +77,7 @@ const Questions = () => {
     return (
         <section style={{width: "80%"}}>
             <PageTitle>Ofte stilte spørsmål</PageTitle>
-            <Question 
-                question="Hvor lang tid tar det å lage ferdig et bilde?"
-                answer="Det er ofte vanskelig å anslå tidsbruk på en kreativ prosess. Alcohol ink-bilder vil ta alt fra 2-8 uker fra idé til ferdig produkt. Ved spesielle henvendelser som krever bestilling av ekstra materialer, vil det ta lenger tid. Et malerier på lerret vil ta minimum 6-12 uker før ferdig produkt, som også innebærer justeringer etter kundens ønske. Ved omfattende detaljarbeid, store størrelser og kompleksitet, kan det ta lenger tid.I perioder med høy etterspørsel, kan det også være venteliste."
-            />
-            <Question 
-                question="Hva koster et bestillingsverk?"
-                answer="Bestillingsverk vil ofte være noe høyere priset enn ferdigstilte kunstverk til salgs. Prisen varierer ut fra størrelse, materialkostnader, kompleksiteten rundt utførelse samt tidsbruk. Spesielle forespørsler vil også være med i prisgrunnlaget.Det vil være en 35 % depositum på bestillingsverk.
-                Send meg gjerne en uforpliktende forespørsel om prisanslag."
-            />
-            <Question 
-                question="Får jeg se bildet før det er ferdig?"
-                answer="Det er viktig for meg at du som kunde blir fornøyd med kunsten du kjøper. Når maleriet nærmer seg ferdig, vil du få et bilde av kunstverket for å høre om du er fornøyd, eller om du ønsker noen endringer før det ferdige resultatet.Spesielt når jeg jobber med alcohol ink, er det en ting det er viktig å være klar over når du ønsker et bilde inspirert av et kunstverk. Alcohol ink er en kompleks og «strong minded» malingsform, hvor ingen bilder vil være like og hvert enkelt bilde vil ha sitt unike uttrykk."
-            />
-            <Question 
-                question="Er maleriet ferdig rammet inn?"
-                answer="Bildene blir ikke solgt med ramme i utgangspunktet, med mindre noe annet er nevnt.
-                Originale alcohol ink-bilder bør alltid ha ramme med glass for å bevare fargen på verket og skjerme mot sollys.
-                BAS Kunst i Larvik (https://www.facebook.com/BAS-Kunst-as-267195263617398/) er en lokal butikk i Vestfold og Telemark som selger for spesialtilpassede rammer for malerier på lerret.
-                Ved bestilling av Glisée Fine Art Prints, finnes det en rammemaker i nabobygget på Fornebo som tilbyr gode priser.
-                Kan bildet senders i posten?
-                Bildene kan sendes over hele Norge.
-                Frakttillegg vil da forekomme."
-            />
+            <Question />
         </section>
     )
 };
@@ -116,5 +130,9 @@ const Answer = styled.section`
 
 
 export default Questions;
+
+
+
+
 
 
