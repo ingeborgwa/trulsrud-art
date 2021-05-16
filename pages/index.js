@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 import PageTitle from '../components/StyledComponents/PageTitle';
-import { MainContainer, Column, Grid, TwoColumnsGrid } from '../components/StyledComponents/Containers';
+import { MainContainer, Column, Grid, TwoColumnsGrid, Container } from '../components/StyledComponents/Containers';
 
 
 import NavigationBar from '../components/NavigationBar';
@@ -39,6 +39,20 @@ export default function Home() {
             </ImageAndTitleBox>
           </LandingPage>
 
+          
+          {/* <section>
+            <img
+              src="/fjellheim.jpg"
+              width="100%"
+              height="500em"
+            ></img>
+          </section>
+           */}
+
+          <ImageSection/>
+
+          
+
           <TwoColumnsGrid>
             <Column>
               <PageTitle>Min kunst</PageTitle>
@@ -68,7 +82,6 @@ export default function Home() {
           </TwoColumnsGrid>
           <Questions/>
         </MainContainer>
-
         <Footer />
         
     </> 
@@ -113,5 +126,14 @@ const ImageContainer = styled.img`
   height: 20em;
   width: 20em;
   padding: 2em;
+`;
+
+const ImageSection = styled.section`
+  background: url("/Gallhøpiggen_postkort.jpg") no-repeat top; 
+  background-size: cover;
+  margin: 2em;
+  width: 100%;
+  height: 30em;
+  padding: 5em;
 `;
 

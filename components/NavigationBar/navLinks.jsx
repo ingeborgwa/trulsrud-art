@@ -8,9 +8,9 @@ export function NavLinks(){
     return (
         <NavLinksContainer>
             <LinksWrapper>
-                <LinkItem><Link href="/about">Om kunstneren</Link></LinkItem>
-                <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
-                <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
+                <LinkItem><Links href="/about">Om kunstneren</Links></LinkItem>
+                <LinkItem><Links href="/contact">Kontakt</Links></LinkItem>
+                <LinkItem><Links href="/gallery">Galleri</Links></LinkItem>
             </LinksWrapper>
         </NavLinksContainer>
     )
@@ -53,6 +53,9 @@ const Links = styled.a`
     text-decoration: none;
     color: inherit;
     font-size: inherit;
+    &:hover{
+        color: #222;
+    }
 `;
 
 

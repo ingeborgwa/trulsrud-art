@@ -16,9 +16,13 @@ import { MainContainer } from '../components/StyledComponents/Containers';
 
 
 
+
 const GalleryTest =() =>{
     const [artWorks, setArtWorks] = useState("");
     const [displayedArt, setDisplayedArt] = useState();
+    const [modalOpen, setModalOpen] = useState(false);
+
+
 
     //------- setter opp Cosmic JS -------//
 
@@ -70,15 +74,28 @@ const GalleryTest =() =>{
               
               return (
                 <Card key={artWork.slug}>
-                  <img src={image.imgix_url} width="200" />
-                  <h6>{artWork.title}</h6>
-                  <p>
-                    {height.value}cm x {width.value}cm
-                  </p>
-                  {/* <Button>
-                    <p>Se mer</p>
-                    <FontAwesomeIcon icon={faLongArrowAltRight} />
-                  </Button> */}
+                    <img src={image.imgix_url} width="200" />
+                    <h6>{artWork.title}</h6>
+                    <p>
+                        {height.value}cm x {width.value}cm
+                    </p>
+                    <Button onClick={() => setModalOpen(!modalOpen)}>
+                        <p>Se mer</p>
+                        <FontAwesomeIcon icon={faLongArrowAltRight} />
+                    </Button>
+                    <Modal toggle={() => setModalOpen(!modalOpen)} isOpen={modalOpen}>
+                        <ModalContent>
+                            <button
+                                aria-label="Close"
+                                className=" close"
+                                type="button"
+                                onClick={() => setModalOpen(!modalOpen)}
+                            >
+                                <span aria-hidden={true}>Lukk</span>
+                            </button>
+
+                        </ModalContent>
+                    </Modal>
                 </Card>
               );
             });
@@ -202,4 +219,37 @@ const OptionsContainer = styled.section`
 
 
 
+const Modal = styled.section`
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4);/* Black w/ opacity */
+`;
 
+const ModalContent = styled.article`
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+`;
+
+const CloseButton = styled.button`
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+
+    &:hover,
+    &:focus{
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+`;

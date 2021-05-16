@@ -44,6 +44,10 @@ export const TwoColumnsGrid = styled.article`
   grid-template-columns: 1fr 1fr;
   padding: 1.2em;
   margin: 2em;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+  } 
   
 `;
 

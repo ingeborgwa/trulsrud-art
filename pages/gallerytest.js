@@ -12,6 +12,8 @@ import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
 import { MainContainer } from '../components/StyledComponents/Containers';
 
+import { Modal, ModalBody } from "reactstrap";
+
 
 
 
@@ -19,6 +21,8 @@ import { MainContainer } from '../components/StyledComponents/Containers';
 const GalleryTest =() =>{
     const [artWorks, setArtWorks] = useState("");
     const [displayedArt, setDisplayedArt] = useState();
+    const [modalOpen, setModalOpen] = useState(false);
+
 
     //------- setter opp Cosmic JS -------//
 
@@ -67,18 +71,40 @@ const GalleryTest =() =>{
               const width = artWork.metafields.find(
                 (metafield) => metafield.key === "width"
               );
+              const mockUp = artWork.metafields.find(
+                (metafield) => metafield.key === "mockup"
+              );
               
               return (
                 <Card key={artWork.slug}>
-                  <img src={image.imgix_url} width="200" />
-                  <h6>{artWork.title}</h6>
-                  <p>
-                    {height.value}cm x {width.value}cm
-                  </p>
-                  {/* <Button>
+                    <img src={image.imgix_url} width="200" />
+                    <h6>{artWork.title}</h6>
+                    <Button
+                        type="button"
+                        onClick={() => setModalOpen(!modalOpen)}
+                    >
                     <p>Se mer</p>
                     <FontAwesomeIcon icon={faLongArrowAltRight} />
-                  </Button> */}
+                    </Button>
+                    <Modal toggle={() => setModalOpen(!modalOpen)} isOpen={modalOpen}>
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">{artWork.title}</h5>
+                            <button
+                                aria-label="Close"
+                                className=" close"
+                                type="button"
+                                onClick={() => setModalOpen(!modalOpen)}
+                            >
+                                <span aria-hidden={true}>Lukk</span>
+                            </button>
+                        </div>
+                        <ModalBody>
+                            <img src={mockUp.imgix_url} width="200" />
+                            <p>Størrelse: {height.value}cm x {width.value}cm</p>
+                            {/* <p>Her kommer det litt info om bildet</p> */}
+
+                        </ModalBody>
+                    </Modal>
                 </Card>
               );
             });
