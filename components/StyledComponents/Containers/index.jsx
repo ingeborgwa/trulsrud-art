@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.main `
   padding: 2rem 0;
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 `;
 
 export const Container = styled.section`
@@ -45,7 +46,7 @@ export const TwoColumnsGrid = styled.article`
   padding: 1.2em;
   margin: 2em;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
   } 
   

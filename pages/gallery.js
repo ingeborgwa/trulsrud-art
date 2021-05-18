@@ -195,7 +195,6 @@ const OptionsButton = styled.button`
     
 `;
 
-
 const OptionsContainer = styled.section`
     display: flex;
     justify-content: center;

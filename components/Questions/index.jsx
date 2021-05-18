@@ -105,7 +105,7 @@ const QuestionStyle = styled.button`
     text-align: left;
 
     p{
-        font-size: 15px;
+        font-size: 0.85rem;
         padding-left: 0.5em;
     }
 `;

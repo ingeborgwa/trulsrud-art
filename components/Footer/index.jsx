@@ -31,50 +31,52 @@ export default Footer;
 //Style
 
 const FooterContainer = styled.footer`
-    width: 100%;
-    height: 100px;
+    /* width: 100vw;
+    height: 10em; */
     box-shadow: 0 1px 3px rgba(15, 15, 15, 0.13);
     display: flex;
     align-items: center;
-    padding: 0 1.5em;
+    justify-content: center;
+    padding: 1em;
+    
 
 `;
 
 const LeftSection = styled.div`
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
-    margin-left: 60px;
+    text-align: left; */
+    /* margin-left: 60px;  */
 `;
 
 const MiddleSection = styled.div`
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 2;
-    text-align: left;
-    margin-left: 60px;
+    text-align: left;*/
+    /* margin-left: 60px;  */
 `;
 
 const RightSection = styled.div`
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
-    margin-left: 60px;
+    text-align: left;*/
+    /* margin-left: 60px;  */
 `;
 
 
 
 const LinkItem = styled.li`
     height: 100%;
-    padding: 0 1.1em;
+    padding: 0 1.8em;
     color: #222;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 0.7rem;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     display: flex;
     border-top: 2px solid transparent;
     transition: all 220ms ease-in-out;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 
 
 function ContactForm () {
@@ -18,7 +17,6 @@ function ContactForm () {
                     required
                 />
             
-            
                 <label htmlFor="email">E-post</label>
                 <input
                     type="email"
@@ -27,11 +25,13 @@ function ContactForm () {
                     required
                 />
             
-            
                 <label htmlFor="message">Din forespørsel</label>
                 <textarea
                     id="message"
+                    rows="5" 
+                    cols="30"
                     required
+                    
                 />
                 <SubmitButton type="submit">Send</SubmitButton>
             </Form>
@@ -61,7 +61,6 @@ const ImageContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px 0 0 10px;
-    
 `;
 
 
@@ -69,8 +68,8 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 20em;
-    height: 25em;
+    width: 25em;
+    height: 30em;
     margin: 1em;
     padding: 2em;
     
@@ -81,10 +80,9 @@ const Form = styled.form`
     }
 
     textarea{
-        border: none;
-        border-bottom: 1px solid black;
-        
-        
+        border: 1px solid black;
+        border-radius:5px;
+        font-family:'Open Sans', sans-serif;
     }
 
     input{

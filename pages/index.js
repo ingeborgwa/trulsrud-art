@@ -6,6 +6,8 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 import PageTitle from '../components/StyledComponents/PageTitle';
+import { useMediaQuery } from 'react-responsive';
+import { DeviceSizes } from '../components/responsive';
 import { MainContainer, Column, Grid, TwoColumnsGrid, Container } from '../components/StyledComponents/Containers';
 
 
@@ -15,6 +17,8 @@ import Questions from '../components/Questions';
 
 
 export default function Home() {
+  const isMobile = useMediaQuery({ maxWidth: DeviceSizes.tablet});
+
   return (
     <>
       <Head>
@@ -39,50 +43,69 @@ export default function Home() {
             </ImageAndTitleBox>
           </LandingPage>
 
+          {!isMobile && <ImageSection/>}
           
-          {/* <section>
-            <img
-              src="/fjellheim.jpg"
-              width="100%"
-              height="500em"
-            ></img>
-          </section>
-           */}
-
-          <ImageSection/>
-
           
 
-          <TwoColumnsGrid>
-            <Column>
-              <PageTitle>Min kunst</PageTitle>
-              <p>
-                  Her kommer litt kort intro om min kunst og hva jeg kan lage til deg. 
+          <div>
+            {!isMobile &&  
+              <TwoColumnsGrid>
+                <Column>
+                  <PageTitle>Min kunst</PageTitle>
+                  <p>Lyst på noe unikt på veggen din?</p>
+                  <p>Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via Instagram (link) for inspirasjon til ditt kommende bilde.</p>
+                  <p>Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.</p>
                   <Link href="/gallery"> Les mer her</Link>
-              </p>
-            </Column>
-            <Grid>
-              <ImageContainer
-                src="/Mockup_blackheartfilledwithpeonies.jpg"
-                alt="Bilde i svart av peonger, malt med alcohol ink, i ramme."
-              />
-              <ImageContainer
-                src="/Mockup_medblomsterihjertet.jpg"
-                alt="Rosa og lille blomster med hjerte, malt med alcohol ink, i ramme"
-              />
-              <ImageContainer
-                src="/Mockup_gullhval.jpg"
-                alt="Gull hval på svart bakgrunn, i ramme"
-              />
-              <ImageContainer
-                src="/Mockup_morgengry_skybrudd.jpg"
-                alt="To malerier av himmel på vegg over sofa"
-              />
-            </Grid>
-          </TwoColumnsGrid>
+                </Column>
+                <Grid>
+                  <ImageContainer
+                    src="/Mockup_blackheartfilledwithpeonies.jpg"
+                    alt="Bilde i svart av peonger, malt med alcohol ink, i ramme."
+                  />
+                  <ImageContainer
+                    src="/Mockup_medblomsterihjertet.jpg"
+                    alt="Rosa og lille blomster med hjerte, malt med alcohol ink, i ramme"
+                  />
+                  <ImageContainer
+                    src="/Mockup_gullhval.jpg"
+                    alt="Gull hval på svart bakgrunn, i ramme"
+                  />
+                  <ImageContainer
+                    src="/Mockup_morgengry_skybrudd.jpg"
+                    alt="To malerier av himmel på vegg over sofa"
+                  />
+                </Grid>
+              </TwoColumnsGrid>
+            }
+            {isMobile && 
+              <section>
+                <PageTitle>Min kunst</PageTitle>
+                <MobilSection>
+                  <article>
+                    <p>Lyst på noe unikt på veggen din?</p>
+
+                    <p>Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via
+                    <Link 
+                      href="https://www.instagram.com/trulsrud.art/" 
+                      target="_blank"> Instagram
+                    </Link> for inspirasjon til ditt kommende bilde.</p>
+
+                    <p>Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.</p>
+                    <Link href="/gallery"><button>Les mer her</button></Link>
+                  </article>
+                  <ImageContainer
+                      src="/Mockup_blackheartfilledwithpeonies.jpg"
+                      alt="Bilde i svart av peonger, malt med alcohol ink, i ramme."
+                  />
+                </MobilSection>
+              </section>
+            }
+          </div>
+         
           <Questions/>
         </MainContainer>
-        <Footer />
+        <Footer/>
+       
         
     </> 
   )
@@ -103,14 +126,20 @@ const LandingPage = styled.div`
   height: 100vh;
   margin: auto;
 
+ 
+  
+
 `;
 
 const ImageAndTitleBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
- 
+  max-width: 400px;
+
+  @media (max-width: 600px){
+    margin: 0.7em;
+  }
 
 `;
 
@@ -126,14 +155,48 @@ const ImageContainer = styled.img`
   height: 20em;
   width: 20em;
   padding: 2em;
+
+  @media (max-width: 600px){
+    width: 100%; 
+    height: auto;
+    padding: 1em;
+  }
 `;
 
 const ImageSection = styled.section`
   background: url("/Gallhøpiggen_postkort.jpg") no-repeat top; 
   background-size: cover;
   margin: 2em;
-  width: 100%;
+  width: 100vw;
   height: 30em;
   padding: 5em;
 `;
 
+const MobilSection = styled.section`
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+
+  p{
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  a{
+    text-decoration:underline;
+  }
+
+  button{
+    font-size: 0.85rem;
+    background-color: #717e79;
+    color: white;
+    border-radius: 10px;
+    padding: 0.5em;
+    cursor: pointer;
+    
+  }
+`;
