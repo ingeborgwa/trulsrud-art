@@ -99,12 +99,12 @@ const GalleryTest =() =>{
         <>
             <NavigationBar/>
             <MainContainer>
-                <PageTitle >Galleri</PageTitle>
+                <PageTitle>Galleri</PageTitle>
                 <OptionsContainer>
-                    <h2 onClick={(e) => filterArts(e)}>Digital kunst</h2>
-                    <h2 onClick={(e) => filterArts(e)}>Akvarell</h2>
-                    <h2 onClick={(e) => filterArts(e)}>Alcohol Ink</h2>
-                    <h2 onClick={(e) => filterArts(e)}>Lerret</h2>
+                    <OptionsButton onClick={(e) => filterArts(e)}>Digital kunst</OptionsButton>
+                    <OptionsButton onClick={(e) => filterArts(e)}>Akvarell</OptionsButton>
+                    <OptionsButton onClick={(e) => filterArts(e)}>Alcohol Ink</OptionsButton>
+                    <OptionsButton onClick={(e) => filterArts(e)}>Lerret</OptionsButton>
                 </OptionsContainer >
                 <GalleryGrid>
                 {displayedArt ? renderArtWorks(displayedArt) : renderArtWorks(artWorks)}
@@ -162,7 +162,6 @@ const Card = styled.article`
         line-height: 1.5;
     }
 
-
     img{
         border-radius: 10px;
     }
@@ -180,24 +179,29 @@ const Button = styled.button`
         font-size: 0.9rem;
         padding-right: 0.5em;
     }
-
 `;
+
+const OptionsButton = styled.button`
+    border: none;
+    background-color: white;
+    text-align: left;
+
+    font-size: 1.2rem;
+    padding: 0.8em;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+    
+`;
+
 
 const OptionsContainer = styled.section`
     display: flex;
     justify-content: center;
     margin: 1.2em;
     padding: 0.5em;
-    font-size: 0.8rem;
-    
-    h2{
-        padding: 0.8em;
-        font-weight: 400;
-        cursor: pointer;
-        &:hover{
-            text-decoration: underline;
-        }
-    }
+    font-size: 0.8rem;   
 `;
 
 
