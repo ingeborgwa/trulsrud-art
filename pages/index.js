@@ -13,6 +13,7 @@ import { MainContainer, Column, Grid, TwoColumnsGrid, Container } from '../compo
 
 import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
+import ToGalleryButton from '../components/StyledComponents/Buttons/ToGalleryButton';
 import Questions from '../components/Questions';
 
 
@@ -43,7 +44,7 @@ export default function Home() {
             </ImageAndTitleBox>
           </LandingPage>
 
-          {!isMobile && <ImageSection/>}
+          {/* {!isMobile && <ImageSection/>} */}
           
           
 
@@ -52,10 +53,21 @@ export default function Home() {
               <TwoColumnsGrid>
                 <Column>
                   <PageTitle>Min kunst</PageTitle>
-                  <p>Lyst på noe unikt på veggen din?</p>
-                  <p>Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via Instagram (link) for inspirasjon til ditt kommende bilde.</p>
-                  <p>Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.</p>
-                  <Link href="/gallery"> Les mer her</Link>
+                  <p>
+                    Lyst på noe unikt på veggen din?
+                  </p>
+                  <p>
+                    Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via
+                      <Link 
+                        href="https://www.instagram.com/trulsrud.art/" 
+                        target="_blank"> Instagram
+                      </Link> 
+                    for inspirasjon til ditt kommende bilde.
+                  </p>
+                  <p>
+                    Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.
+                  </p>
+                  <Link href="/gallery"><ToGallery>Les mer her</ToGallery></Link>
                 </Column>
                 <Grid>
                   <ImageContainer
@@ -82,16 +94,21 @@ export default function Home() {
                 <PageTitle>Min kunst</PageTitle>
                 <MobilSection>
                   <article>
-                    <p>Lyst på noe unikt på veggen din?</p>
-
-                    <p>Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via
-                    <Link 
-                      href="https://www.instagram.com/trulsrud.art/" 
-                      target="_blank"> Instagram
-                    </Link> for inspirasjon til ditt kommende bilde.</p>
-
-                    <p>Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.</p>
-                    <Link href="/gallery"><button>Les mer her</button></Link>
+                    <p>
+                      Lyst på noe unikt på veggen din?
+                    </p>
+                    <p>
+                      Jeg tar også opp bestillinger på originale kunstverk. Bildet vil være unikt i sin karakter og tilpasset dine ønsker om størrelse, farger og kunstuttrykk. Se gjerne gjennom galleriet og tidligere solgte verker eller via
+                      <Link 
+                        href="https://www.instagram.com/trulsrud.art/" 
+                        target="_blank"> Instagram 
+                      </Link> 
+                      for inspirasjon til ditt kommende bilde.
+                    </p>
+                    <p>
+                      Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.
+                    </p>
+                    <Link href="/gallery"><ToGallery>Les mer her</ToGallery></Link>
                   </article>
                   <ImageContainer
                       src="/Mockup_blackheartfilledwithpeonies.jpg"
@@ -125,10 +142,6 @@ const LandingPage = styled.div`
   position: absolute; */
   height: 100vh;
   margin: auto;
-
- 
-  
-
 `;
 
 const ImageAndTitleBox = styled.div`
@@ -173,13 +186,13 @@ const ImageSection = styled.section`
 `;
 
 const MobilSection = styled.section`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 1em;
+  padding: 2em;
+  width: 90%;
+  margin: auto;
 
   p{
     font-size: 0.85rem;
@@ -188,15 +201,20 @@ const MobilSection = styled.section`
 
   a{
     text-decoration:underline;
+    padding-right: 0.2em;
   }
 
-  button{
-    font-size: 0.85rem;
-    background-color: #717e79;
-    color: white;
-    border-radius: 10px;
-    padding: 0.5em;
-    cursor: pointer;
-    
-  }
+  
+`;
+
+
+
+
+const ToGallery = styled.button`
+  background-color: white;
+  border: none;
+  padding: 0.5em;
+  text-decoration:underline;
+  cursor: pointer;
+
 `;

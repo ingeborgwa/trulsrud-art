@@ -42,7 +42,6 @@ const NavigationBar = () => {
 const NavbarContainer = styled.nav`
   width: 100%;
   height: 60px;
-  flex: 1;
   box-shadow: 0 1px 3px rgba(15, 15, 15, 0.13);
   display: flex;
   align-items: center;

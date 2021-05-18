@@ -39,7 +39,6 @@ const FooterContainer = styled.footer`
     justify-content: center;
     padding: 1em;
     
-
 `;
 
 const LeftSection = styled.div`
@@ -85,8 +84,3 @@ const LinkItem = styled.li`
             text-decoration: underline;
         }
 `;
-
-
-
-
-
