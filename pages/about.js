@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image'
 import Cosmic from 'cosmicjs';
 import styled from 'styled-components';
-
-import styles from '../styles/Home.module.css'
 
 import { useMediaQuery } from 'react-responsive';
 import { DeviceSizes } from '../components/responsive';
 import NavigationBar from '../components/NavigationBar/';
 import Footer from '../components/Footer';
-import BackButton from '../components/StyledComponents/Buttons/BackButton';
 import PageTitle from '../components/StyledComponents/PageTitle';
-import { MainContainer, TwoColumnsGrid } from '../components/StyledComponents/Containers';
+import { MainContainer } from '../components/StyledComponents/Containers';
 
-function About  () {
+
+
+
+
+
+function AboutTest  () {
     const [aboutData, setAboutData] = useState(null);
     const isMobile = useMediaQuery({ maxWidth: DeviceSizes.mobile});
     
 
     //------- setter opp Cosmic JS -------//
+
     useEffect(() => {
 
         const client = new Cosmic();
@@ -34,7 +36,6 @@ function About  () {
         })
         .then(data => {
             setAboutData(data.object);
-            console.log(data.object.metafields)
             
         })
         .catch(error => {
@@ -52,7 +53,6 @@ function About  () {
 
     
 function renderPage() {
-       
     return (
         <>
             <NavigationBar/>
@@ -63,26 +63,18 @@ function renderPage() {
                         <FirstSection>
                             <ImageContainerTop alt="Bilde av Thea som maler"/>
                             <article>
-                                <h3>Hei, jeg er Thea</h3>
-                                <h4>Håper du finner glede og inspirasjon i kunsten min.</h4>
-                                <p>
-                                    Jeg heter Thea Helene Trulsrud, født i 1990 og er oppvokst på Bærums Verk. Jeg har nå bosatt meg i den lille sommerbyen Tønsberg, der jeg jobber som kunstner og intensivsykepleier. Min interesse for billedkunst startet i en alder av 16 år og kan nå si at det har blitt en del av min identitet og hverdag. 
-                                </p>
+                                {aboutData && <h3>{aboutData.metafields[0].value}</h3>}
+                                {aboutData && <h4>{aboutData.metafields[1].value}</h4>}
+                                {aboutData && <p>{aboutData.metafields[2].value}</p>}
                             </article>
                         </FirstSection>
                         <MiddleSection>
-                            <p style={{paddingTop:'2em'}}>
-                                Jeg inspireres av skjønnheten i naturen og møtene med menneskene rundt meg og i arbeidet som intensivsykepleier. Det er spesielt de skjøre og fine øyeblikkene i livet som gir varme helt inn til hjerteroten og setter ekstra preg på den kreative drivkraften. Dette kommer gjerne til uttrykk med sterke kontraster og forgylte detaljer i bildene mine. Variasjonen i maleriene er preget av at jeg liker å bli utfordret og inspireres ofte til å prøve noe nytt, noe som gjør at kunstprosjektene er i stadig endring.
-                            </p>
-                            <p style={{paddingBottom:'2em'}}>
-                                For tiden jobber jeg mest med alkoholblekk (alcohol ink) i kombinasjon med forskjellige type penner, gulldekor og resin på metall-/keramikkflater eller på syntetisk papir. Uttrykket er vanligvis mer abstrakt eller semiabstrakt med denne malingstypen. Alcohol ink er et relativt nytt malemedium i Norge, som krever mye konsentrasjon og kunnskap hos utøveren. Det blir sett på som en strong minded malingsform, hvor det å kontrollere malingen er utfordrende, men vil samtidig før til at hvert bilde blir unikt i seg selv. I en arbeidsperiode pleier jeg gjerne å veksler mellom to-tre forskjellige kunstprosjekter som jeg holder på meg. Da er det ofte et landskapsbilde i akryl og et par abstrakte alcohol ink-bilder som kombineres. Og det er kanskje min lille hemmelighet for å holde kreativiteten pirret og drivkraften i gang.
-                            </p>
+                            {aboutData && <p style={{paddingTop:'2em'}}>{aboutData.metafields[3].value}</p>}
+                            {aboutData && <p style={{paddingBottom:'2em'}}>{aboutData.metafields[4].value}</p>}
                         </MiddleSection>
                         <LastSection>
                             <TextBox>
-                                <p>
-                                    Jeg er selvlært innen alcohol ink-maling og brukt youtube og studert andre kunstneres teknikk og metode for å utvikle meg. Ofte bruker jeg erfaringer og kunnskap fra tidligere kurs innen akryl, olje og akvarellmaling som basisgrunnlag for all maling jeg holder på med. Kunstnere jeg har blitt inspirerert av og gått på kurs hos er blant annet Enver Gashi, Igor Mayer, Aud Rye og Anna Ivanova.
-                                </p>
+                                {aboutData && <p>{aboutData.metafields[5].value}</p>}
                             </TextBox>
                         </LastSection>
                     </div>  
@@ -91,29 +83,20 @@ function renderPage() {
                 {isMobile && 
                     <div>
                         <MobileTextSection>
-                            <h3>Hei, jeg er Thea</h3>
-                            <h4>Håper du finner glede og inspirasjon i kunsten min.</h4>
-                            <p>
-                                Jeg heter Thea Helene Trulsrud, født i 1990 og er oppvokst på Bærums Verk. Jeg har nå bosatt meg i den lille sommerbyen Tønsberg, der jeg jobber som kunstner og intensivsykepleier. Min interesse for billedkunst startet i en alder av 16 år og kan nå si at det har blitt en del av min identitet og hverdag. 
-                            </p>
+                            {aboutData && <h3>{aboutData.metafields[0].value}</h3>}
+                            {aboutData && <h4>{aboutData.metafields[1].value}</h4>}
+                            {aboutData && <p>{aboutData.metafields[2].value}</p>}
                             <ImageContainerTop alt="Bilde av Thea som maler"/>
                         </MobileTextSection>
                         <MobileTextSection style={{backgroundColor:"#717e79", color:"white"}}>
-                            <p style={{paddingTop:'1em'}}>
-                                Jeg inspireres av skjønnheten i naturen og møtene med menneskene rundt meg og i arbeidet som intensivsykepleier. Det er spesielt de skjøre og fine øyeblikkene i livet som gir varme helt inn til hjerteroten og setter ekstra preg på den kreative drivkraften. Dette kommer gjerne til uttrykk med sterke kontraster og forgylte detaljer i bildene mine. Variasjonen i maleriene er preget av at jeg liker å bli utfordret og inspireres ofte til å prøve noe nytt, noe som gjør at kunstprosjektene er i stadig endring.
-                            </p>
-                            <p style={{paddingBottom:'1em'}}>
-                                For tiden jobber jeg mest med alkoholblekk (alcohol ink) i kombinasjon med forskjellige type penner, gulldekor og resin på metall-/keramikkflater eller på syntetisk papir. Uttrykket er vanligvis mer abstrakt eller semiabstrakt med denne malingstypen. Alcohol ink er et relativt nytt malemedium i Norge, som krever mye konsentrasjon og kunnskap hos utøveren. Det blir sett på som en strong minded malingsform, hvor det å kontrollere malingen er utfordrende, men vil samtidig før til at hvert bilde blir unikt i seg selv. I en arbeidsperiode pleier jeg gjerne å veksler mellom to-tre forskjellige kunstprosjekter som jeg holder på meg. Da er det ofte et landskapsbilde i akryl og et par abstrakte alcohol ink-bilder som kombineres. Og det er kanskje min lille hemmelighet for å holde kreativiteten pirret og drivkraften i gang.
-                            </p>
+                            {aboutData && <p style={{paddingTop:'1em'}}>{aboutData.metafields[3].value}</p>}
+                            {aboutData && <p style={{paddingBottom:'1em'}}>{aboutData.metafields[4].value}</p>}
                         </MobileTextSection>
                         <MobileTextSection>
-                            <p>
-                                Jeg er selvlært innen alcohol ink-maling og brukt youtube og studert andre kunstneres teknikk og metode for å utvikle meg. Ofte bruker jeg erfaringer og kunnskap fra tidligere kurs innen akryl, olje og akvarellmaling som basisgrunnlag for all maling jeg holder på med. Kunstnere jeg har blitt inspirerert av og gått på kurs hos er blant annet Enver Gashi, Igor Mayer, Aud Rye og Anna Ivanova.
-                            </p>
+                            {aboutData && <p>{aboutData.metafields[5].value}</p>}
                         </MobileTextSection>
                     </div>
-                }
-               
+                } 
             </MainContainer >
             <Footer/>
         </>
@@ -129,7 +112,7 @@ function renderPage() {
 
 }
 
-export default About;
+export default AboutTest;
 
 
 
@@ -227,14 +210,6 @@ const MobileTextSection = styled.section`
     }
 `;
 
-
-// const ImageContainerBottom = styled.div`
-//     background-image: url("/havbris_fat.jpg");
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     background-position: left;
-//     height: 500px;
-// `;
 
 
 
