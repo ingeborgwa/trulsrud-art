@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.main `
   padding: 2rem 0;
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,9 +14,7 @@ export const Container = styled.section`
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center;
-   */
+ 
 
 `;
 
@@ -25,6 +22,10 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  a{
+    text-decoration: underline;
+    padding-right: 0.2em;
+  }
 
 `;
 

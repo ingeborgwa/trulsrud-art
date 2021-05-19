@@ -20,50 +20,58 @@ const Footer = () => {
                 <LinkItem><a target="_blank" href="https://www.instagram.com/trulsrud.art/">Instagram</a></LinkItem>
             </RightSection>
         </FooterContainer>
-        
-
     )
 
 };
 
 export default Footer;
 
-//Style
+//------- Style -------//
 
 const FooterContainer = styled.footer`
-    /* width: 100vw;
-    height: 10em; */
     box-shadow: 0 1px 3px rgba(15, 15, 15, 0.13);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1em;
     
+    
 `;
 
 const LeftSection = styled.div`
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left; */
-    /* margin-left: 60px;  */
+    text-align: left;
+    margin-left: 60px; 
+
+    @media (max-width: 600px){
+        margin: 0;
+    }
 `;
 
 const MiddleSection = styled.div`
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 2;
-    text-align: left;*/
-    /* margin-left: 60px;  */
+    text-align: left;
+    margin-left: 60px; 
+
+    @media (max-width: 600px){
+        margin: 0;
+    }
 `;
 
 const RightSection = styled.div`
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;*/
-    /* margin-left: 60px;  */
+    text-align: left;
+    margin-left: 60px; 
+
+    @media (max-width: 600px){
+        margin: 0;
+    }
 `;
 
 
@@ -73,7 +81,7 @@ const LinkItem = styled.li`
     padding: 0 1.8em;
     color: #222;
     font-weight: 500;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     align-items: center;
     justify-content: left;
     display: flex;

@@ -53,7 +53,6 @@ const FormBox = styled.article`
 
     @media (max-width: 600px){
         width: 80%;
-        
     }
 
 `;
@@ -94,8 +93,6 @@ const Form = styled.form`
         width: 70%;
     }
 
-
-    
 `;
 
 
@@ -111,7 +108,6 @@ const SubmitButton = styled.button`
     transition-property: transform;
 
     &:hover{
-        /* -webkit-transform: scale(1.1); */
         transform: scale(1.1);
     }
 `;

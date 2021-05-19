@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
 import Cosmic from 'cosmicjs';
-import styles from '../styles/Home.module.css'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltRight  } from '@fortawesome/free-solid-svg-icons';
 
 import PageTitle from '../components/StyledComponents/PageTitle';
 import NavigationBar from '../components/NavigationBar';
@@ -16,9 +11,11 @@ import { MainContainer } from '../components/StyledComponents/Containers';
 
 
 
-const GalleryTest =() =>{
+const Gallery =() => {
     const [artWorks, setArtWorks] = useState("");
     const [displayedArt, setDisplayedArt] = useState();
+
+
 
     //------- setter opp Cosmic JS -------//
 
@@ -55,7 +52,7 @@ const GalleryTest =() =>{
 
     function renderArtWorks(type) {
         if (!type) {
-            return <p>Loading...</p>;
+            return <p>Laster siden..</p>;
           } else {
             return type.map((artWork) => {
               const image = artWork.metafields.find(
@@ -70,15 +67,11 @@ const GalleryTest =() =>{
               
               return (
                 <Card key={artWork.slug}>
-                  <img src={image.imgix_url} width="200" />
-                  <h6>{artWork.title}</h6>
-                  <p>
-                    {height.value}cm x {width.value}cm
-                  </p>
-                  {/* <Button>
-                    <p>Se mer</p>
-                    <FontAwesomeIcon icon={faLongArrowAltRight} />
-                  </Button> */}
+                    <img src={image.imgix_url} width="200"/>
+                    <div>
+                        <h6>{artWork.title}</h6>
+                        <p>{height.value} cm x {width.value} cm</p>
+                    </div>
                 </Card>
               );
             });
@@ -92,7 +85,6 @@ const GalleryTest =() =>{
             artWorks.filter((el) => el.metafields[4].value[0] === e.target.innerHTML)
         );
     }
-
    
 
     return(
@@ -105,6 +97,7 @@ const GalleryTest =() =>{
                     <OptionsButton onClick={(e) => filterArts(e)}>Akvarell</OptionsButton>
                     <OptionsButton onClick={(e) => filterArts(e)}>Alcohol Ink</OptionsButton>
                     <OptionsButton onClick={(e) => filterArts(e)}>Lerret</OptionsButton>
+
                 </OptionsContainer >
                 <GalleryGrid>
                 {displayedArt ? renderArtWorks(displayedArt) : renderArtWorks(artWorks)}
@@ -115,7 +108,7 @@ const GalleryTest =() =>{
     );
 }
 
-export default GalleryTest;
+export default Gallery;
 
 
 
@@ -135,11 +128,13 @@ const GalleryGrid = styled.section`
         flex-direction: column;
         margin-right: 0.6em;
     }
-
 `;
 
 
 const Card = styled.article`
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 1rem;
     padding: 1.5rem;
     text-align: left;
@@ -168,19 +163,7 @@ const Card = styled.article`
     }
 `;
 
-const Button = styled.button`
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    border: none;
-    background-color: white;
-    text-align: left;
 
-    p{
-        font-size: 0.9rem;
-        padding-right: 0.5em;
-    }
-`;
 
 const OptionsButton = styled.button`
     border: none;
@@ -199,10 +182,7 @@ const OptionsButton = styled.button`
         justify-content: center;
         font-size: 0.85rem;
         padding: 0.5em;
-       
     }
-    
-    
 
 `;
 

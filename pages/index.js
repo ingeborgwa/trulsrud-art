@@ -8,12 +8,12 @@ import Link from 'next/link';
 import PageTitle from '../components/StyledComponents/PageTitle';
 import { useMediaQuery } from 'react-responsive';
 import { DeviceSizes } from '../components/responsive';
-import { MainContainer, Column, Grid, TwoColumnsGrid, Container } from '../components/StyledComponents/Containers';
+import { MainContainer, Column, Grid, TwoColumnsGrid } from '../components/StyledComponents/Containers';
 
 
 import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
-import ToGalleryButton from '../components/StyledComponents/Buttons/ToGalleryButton';
+
 import Questions from '../components/Questions';
 
 
@@ -31,7 +31,7 @@ export default function Home() {
         <MainContainer>
           <LandingPage>
             <ImageAndTitleBox>
-              <PageTitle style={{textAlign:"left"}}>trulsrud</PageTitle>
+              <PageTitle style={{textAlign:"left", fontSize:"4rem"}}>trulsrud</PageTitle>
               <MainImageStyle>
                 <Image 
                     src="/landingpage.png"
@@ -40,14 +40,10 @@ export default function Home() {
                     height={400}
                   />
               </MainImageStyle>
-              <PageTitle style={{textAlign:"right"}}>art</PageTitle>
+              <PageTitle style={{textAlign:"right", fontSize:"4rem"}}>art</PageTitle>
             </ImageAndTitleBox>
           </LandingPage>
-
-          {/* {!isMobile && <ImageSection/>} */}
           
-          
-
           <div>
             {!isMobile &&  
               <TwoColumnsGrid>
@@ -67,7 +63,7 @@ export default function Home() {
                   <p>
                     Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.
                   </p>
-                  <Link href="/gallery"><ToGallery>Les mer her</ToGallery></Link>
+                  <Link href="/gallery"><ToGallery>Se mer her</ToGallery></Link>
                 </Column>
                 <Grid>
                   <ImageContainer
@@ -89,6 +85,7 @@ export default function Home() {
                 </Grid>
               </TwoColumnsGrid>
             }
+
             {isMobile && 
               <section>
                 <PageTitle>Min kunst</PageTitle>
@@ -108,7 +105,7 @@ export default function Home() {
                     <p>
                       Ta gjerne kontakt via email, så hjelper jeg deg med å finne ut av hva som passer for deg. Det er også mulig å møtes personlig for en uforpliktende samtale.
                     </p>
-                    <Link href="/gallery"><ToGallery>Les mer her</ToGallery></Link>
+                    <Link href="/gallery"><ToGallery>Se mer her</ToGallery></Link>
                   </article>
                   <ImageContainer
                       src="/Mockup_blackheartfilledwithpeonies.jpg"
@@ -118,16 +115,12 @@ export default function Home() {
               </section>
             }
           </div>
-         
           <Questions/>
         </MainContainer>
         <Footer/>
-       
-        
     </> 
   )
 };
-
 
 
 //--------- STYLE --------- //
@@ -136,13 +129,9 @@ export default function Home() {
 
 
 const LandingPage = styled.div`
-  /* background-image: url("/canvas-background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute; */
   height: 100vh;
   margin: auto;
-  padding-top: 2em;
+  padding-top: 1.3em;
 `;
 
 const ImageAndTitleBox = styled.div`
@@ -177,14 +166,6 @@ const ImageContainer = styled.img`
   }
 `;
 
-const ImageSection = styled.section`
-  background: url("/Gallhøpiggen_postkort.jpg") no-repeat top; 
-  background-size: cover;
-  margin: 2em;
-  width: 100vw;
-  height: 30em;
-  padding: 5em;
-`;
 
 const MobilSection = styled.section`
   display: flex;
@@ -208,12 +189,12 @@ const MobilSection = styled.section`
   
 `;
 
-
 const ToGallery = styled.button`
   background-color: white;
   border: none;
   padding: 0.5em;
   text-decoration:underline;
   cursor: pointer;
+  font-size: 1rem;
 
 `;

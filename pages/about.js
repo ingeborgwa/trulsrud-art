@@ -9,12 +9,7 @@ import Footer from '../components/Footer';
 import PageTitle from '../components/StyledComponents/PageTitle';
 import { MainContainer } from '../components/StyledComponents/Containers';
 
-
-
-
-
-
-function AboutTest  () {
+function About () {
     const [aboutData, setAboutData] = useState(null);
     const isMobile = useMediaQuery({ maxWidth: DeviceSizes.mobile});
     
@@ -46,7 +41,7 @@ function AboutTest  () {
 
     function renderSkeleton() {
         return (
-            <p>Laster data..</p>
+            <p>Laster siden..</p>
         );
     }
 
@@ -61,7 +56,7 @@ function renderPage() {
                 {!isMobile && 
                     <div>
                         <FirstSection>
-                            <ImageContainerTop alt="Bilde av Thea som maler"/>
+                            <ImageContainer alt="Bilde av Thea som maler"/>
                             <article>
                                 {aboutData && <h3>{aboutData.metafields[0].value}</h3>}
                                 {aboutData && <h4>{aboutData.metafields[1].value}</h4>}
@@ -86,7 +81,7 @@ function renderPage() {
                             {aboutData && <h3>{aboutData.metafields[0].value}</h3>}
                             {aboutData && <h4>{aboutData.metafields[1].value}</h4>}
                             {aboutData && <p>{aboutData.metafields[2].value}</p>}
-                            <ImageContainerTop alt="Bilde av Thea som maler"/>
+                            <ImageContainer alt="Bilde av Thea som maler"/>
                         </MobileTextSection>
                         <MobileTextSection style={{backgroundColor:"#717e79", color:"white"}}>
                             {aboutData && <p style={{paddingTop:'1em'}}>{aboutData.metafields[3].value}</p>}
@@ -112,11 +107,11 @@ function renderPage() {
 
 }
 
-export default AboutTest;
+export default About;
 
 
 
-const ImageContainerTop = styled.div`
+const ImageContainer = styled.div`
     background: url("/thea.jpg") no-repeat center;
     background-size: cover;
     height: 20em;
@@ -209,11 +204,3 @@ const MobileTextSection = styled.section`
         line-height: 1.5;
     }
 `;
-
-
-
-
-
-
-
-

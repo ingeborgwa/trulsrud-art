@@ -11,11 +11,9 @@ import PageTitle from '../StyledComponents/PageTitle';
 const Question = ({ question }) => {
     const [showAnswer, setShowAnswer] = useState(false);
     
-    
     function toggle() {
         setShowAnswer(!showAnswer);
     }
-
 
     return (
         <>
@@ -121,8 +119,6 @@ const Answer = styled.section`
     transition: .8s ease-in-out;
     overflow: hidden;
     max-height: 600px;
-    
-    
 `;
 
 
