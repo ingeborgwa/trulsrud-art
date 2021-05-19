@@ -8,9 +8,34 @@ import {  faCaretUp, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import PageTitle from '../StyledComponents/PageTitle';
 
 
-
-const Question = () => {
+const Question = ({ question }) => {
     const [showAnswer, setShowAnswer] = useState(false);
+    
+    
+    function toggle() {
+        setShowAnswer(!showAnswer);
+    }
+
+
+    return (
+        <>
+            <QuestionBox>
+                <QuestionStyle onClick={toggle}>
+                    <FontAwesomeIcon 
+                        icon={showAnswer ? faCaretUp : faCaretRight}
+                    />
+                    <p>{question.title}</p>
+                </QuestionStyle>
+                <Answer style={{maxHeight: showAnswer ? "600px" : "0px"}}>
+                    <p dangerouslySetInnerHTML={{__html:question.content}} />
+                </Answer>
+            </QuestionBox> 
+        </>
+    )
+};
+
+
+const Questions = () => {
     const [questionData, setQuestionData] = useState([]);
 
 
@@ -42,45 +67,24 @@ const Question = () => {
         })
     }, []);
 
-    
-    function toggle() {
-        setShowAnswer(!showAnswer);
-    }
 
 
     return (
         <>
-            {questionData.map(question => {
+            <section style={{width: "80%"}}>
+                <PageTitle>Ofte stilte spørsmål</PageTitle>
+                {questionData.map(question => {
                 return (
-                    <QuestionBox key={question.slug}>
-                        <QuestionStyle onClick={toggle}>
-                            <FontAwesomeIcon 
-                                icon={showAnswer ? faCaretUp : faCaretRight}
-                            />
-                            <p>{question.title}</p>
-                        </QuestionStyle>
-                        <Answer style={{display: showAnswer ? "block" : "none"}}>
-                            <p dangerouslySetInnerHTML={{__html:question.content}} />
-                        </Answer>
-                    </QuestionBox>
+                    <Question question={question}/>
                 )
             })}
-            
+            </section>
         </>
     )
 };
 
 
 
-const Questions = () => {
-    
-    return (
-        <section style={{width: "80%"}}>
-            <PageTitle>Ofte stilte spørsmål</PageTitle>
-            <Question />
-        </section>
-    )
-};
 
 
 
@@ -114,18 +118,11 @@ const Answer = styled.section`
     width: 90%;
     font-size: 0.8rem;
 
+    transition: .8s ease-in-out;
     overflow: hidden;
-    animation: open 0.8s forwards;
+    max-height: 600px;
     
-    @keyframes open {
-        0%{
-            
-            height: 0;
-        }
-        100%{
-            height: 120px;
-        }
-    }
+    
 `;
 
 

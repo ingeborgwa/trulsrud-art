@@ -133,6 +133,7 @@ const GalleryGrid = styled.section`
     @media (max-width: 600px) {
         width: 100%;
         flex-direction: column;
+        margin-right: 0.6em;
     }
 
 `;
@@ -192,7 +193,17 @@ const OptionsButton = styled.button`
     &:hover{
         text-decoration: underline;
     }
+
+    @media (max-width: 600px){
+        display: flex;
+        justify-content: center;
+        font-size: 0.85rem;
+        padding: 0.5em;
+       
+    }
     
+    
+
 `;
 
 const OptionsContainer = styled.section`
@@ -200,7 +211,9 @@ const OptionsContainer = styled.section`
     justify-content: center;
     margin: 1.2em;
     padding: 0.5em;
-    font-size: 0.8rem;   
+    font-size: 0.8rem;  
+
+    
 `;
 
 

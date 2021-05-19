@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 
 function ContactForm () {
-
     return(
-        
         <FormBox>
             <ImageContainer alt="Anatomisk hjerte"/>
             <Form>
@@ -31,7 +29,6 @@ function ContactForm () {
                     rows="5" 
                     cols="30"
                     required
-                    
                 />
                 <SubmitButton type="submit">Send</SubmitButton>
             </Form>
@@ -54,6 +51,11 @@ const FormBox = styled.article`
     border: 0.1px solid white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
+    @media (max-width: 600px){
+        width: 80%;
+        
+    }
+
 `;
 
 const ImageContainer = styled.div`
@@ -73,23 +75,25 @@ const Form = styled.form`
     margin: 1em;
     padding: 2em;
     
-    
-
     label{
         padding: 1.7em 1em 1em 0;
     }
 
     textarea{
         border: 1px solid black;
-        border-radius:5px;
+        border-radius: 5px;
         font-family:'Open Sans', sans-serif;
     }
 
     input{
         border: none;
         border-bottom: 1px solid black;
-        
     }
+
+    @media (max-width: 600px){
+        width: 70%;
+    }
+
 
     
 `;

@@ -16,6 +16,7 @@ export function MobileNavLinks(props){
                     <LinkItem><Link href="/about">Om kunstneren</Link></LinkItem>
                     <LinkItem><Link href="/contact">Kontakt</Link></LinkItem>
                     <LinkItem><Link href="/gallery">Galleri</Link></LinkItem>
+                    <LinkItem><Links href="/questions">Spørsmål & svar</Links></LinkItem>
                 </LinksWrapper>
             )}
             

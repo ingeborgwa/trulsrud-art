@@ -11,6 +11,7 @@ export function NavLinks(){
                 <LinkItem><Links href="/about">Om kunstneren</Links></LinkItem>
                 <LinkItem><Links href="/contact">Kontakt</Links></LinkItem>
                 <LinkItem><Links href="/gallery">Galleri</Links></LinkItem>
+                <LinkItem><Links href="/questions">Spørsmål & svar</Links></LinkItem>
             </LinksWrapper>
         </NavLinksContainer>
     )

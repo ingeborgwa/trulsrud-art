@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+
 
 import PageTitle from '../components/StyledComponents/PageTitle';
 import { useMediaQuery } from 'react-responsive';
@@ -142,6 +142,7 @@ const LandingPage = styled.div`
   position: absolute; */
   height: 100vh;
   margin: auto;
+  padding-top: 2em;
 `;
 
 const ImageAndTitleBox = styled.div`
@@ -200,14 +201,12 @@ const MobilSection = styled.section`
   }
 
   a{
-    text-decoration:underline;
+    text-decoration: underline;
     padding-right: 0.2em;
   }
 
   
 `;
-
-
 
 
 const ToGallery = styled.button`

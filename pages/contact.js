@@ -52,7 +52,7 @@ function ContactPage () {
                 <MainContainer>
                     <PageTitle>Ta kontakt her</PageTitle>
                     <ContactForm/>
-                    <Container dangerouslySetInnerHTML={{__html:pageData.content}} />
+                    <Container style={{padding:"1em"}} dangerouslySetInnerHTML={{__html:pageData.content}} />
                 </MainContainer>
                 <Footer/>
             </>
